@@ -23,6 +23,8 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 morganBody(app, {
   logIP: true,
   logReqUserAgent: false,
+  noColors: typeof process.env.DYNO !== "undefined", // Heroku doesn't support color in log
+  logReqDateTime: false,
 });
 
 // Routes
